@@ -11,8 +11,9 @@ matches = []
 for groups in phoneRegex.findall(str(pyperclip.paste())):
    phoneNum = '-'.join([groups[0], groups[2], groups[4]])
    matches.append(phoneNum)
-m=1
-for j in matches:   
-   print(m,". ",end="")
-   print(j)
-   m+=1 
+if len(matches) > 0:             # Copy results to the clipboard.
+   pyperclip.copy('\n'.join(matches))
+   print('Copied to clipboard:')
+   print('\n'.join(matches))
+else:
+   print('No phone no. found.')
